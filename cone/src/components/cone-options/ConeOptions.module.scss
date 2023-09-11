@@ -1,0 +1,151 @@
+.options{
+    position: fixed;
+
+    top: 0;
+    right: 0;
+
+    width: 30%;
+    height: 100%;
+
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0px 10px 5px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0);
+
+    clip-path:  circle(1.78rem at calc(100% - 2.8rem) 2.8rem);
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    transition: .5s ease-in-out;
+    &.open{
+        clip-path: circle(75%);
+    }
+}
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 1rem;
+    margin: 1rem 0;
+}
+
+.smooth{
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.list {
+    width: 100%;
+
+    opacity: 0;
+
+    transition: 1.2s ease-in-out;
+}
+
+.open .list{
+    opacity: 1;
+}
+
+@mixin icon($height, $width) {
+    position: absolute;
+    
+    top: 24px;
+    
+    height: $height;
+    width: $width;
+    
+    background-color: #fff;
+
+    transition-duration: 0.5s;
+}
+  
+@mixin icon-after($height, $width, $top) {
+    content: "";
+    
+    position: absolute;
+    
+    top: $top;
+    
+    width: $width;
+    height: $height;
+    
+    background-color: #fff;
+    
+    transition-duration: 0.5s;
+}
+  
+
+.burger {
+    position: absolute;
+    z-index: 100;
+    
+    right: 20px;
+    top: 19px;
+    
+    height: 48px;
+    width: 48px;
+    
+    border-radius: 50%;
+    background-color: #000;
+
+    cursor: pointer;
+
+    .right{
+       @include icon(3px, 24px);
+       left: 10px;
+
+       &::after {
+        @include icon-after(3px, 24px, 10px)
+       }
+
+       &::before {
+        @include icon-after(3px, 24px, -10px)
+       }
+    }
+
+    .left{
+        @include icon(3px, 24px);
+        left: 15px;
+ 
+        &::after {
+         @include icon-after(3px, 24px, 10px)
+        }
+ 
+        &::before {
+         @include icon-after(3px, 24px, -10px)
+        }
+    }
+}
+
+
+.open {
+    .left {
+        background-color: transparent;
+
+        &::before{
+            transform: rotateZ(-43deg)  translate(-2px, 5.6px);
+        }
+
+        &::after{
+            transform: rotateZ(43deg)  translate(-2px, -5.6px);
+        }
+    }
+
+    .right{
+        background-color: transparent;
+
+        &::before{
+            transform: rotateZ(43deg)  translate(2px, 5.6px);
+        }
+
+        &::after{
+            transform: rotateZ(-43deg)  translate(2px, -5.6px);
+        }
+    }
+}

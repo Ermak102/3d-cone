@@ -1,0 +1,39 @@
+.item{
+    margin: 1.5rem 0;
+}
+
+.wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 1rem;
+}
+
+.title {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.input-range {
+    width: 90%;
+    display: block;
+    margin-left: 1rem;
+}
+
+.input-number{
+    box-shadow:  0 0 0 3px transparent, rgba(0,0,0,0.05) 0px 2px 4px 0px inset;   
+    background: transparent;
+
+    font-size: .9rem;
+    line-height: 1.4;
+
+    border: 1px solid #e5e7eb;
+    border-radius: .5rem;
+
+    padding: .2rem;
+
+    width: 4rem;
+
+    text-align: center;
+}
